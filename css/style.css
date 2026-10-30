@@ -1,0 +1,127 @@
+
+/* Загальні налаштування сторінки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #030712 url("../images/cosmos.jpg") center / cover no-repeat fixed;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.scene {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px 15px;
+}
+
+h1 {
+    font-size: clamp(22px, 4vw, 36px);
+    text-shadow: 0 0 15px #4da6ff;
+}
+
+p {
+    font-size: 16px;
+    color: #d1d5db;
+}
+
+/* Область анімації */
+.space {
+    position: relative;
+    width: min(90vw, 600px);
+    aspect-ratio: 1;
+    isolation: isolate;
+}
+
+/* Земля */
+#earth {
+    position: absolute;
+    width: 42%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    filter: drop-shadow(0 0 25px #168cff);
+}
+
+/* Місяць */
+#moon {
+    position: absolute;
+    width: 14%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+
+    animation: orbita 5s linear infinite;
+}
+
+/* Анімація руху Місяця */
+@keyframes orbita {
+    0% {
+        top: 35%;
+        left: 35%;
+        width: 11%;
+        z-index: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    24% {
+        z-index: 0;
+    }
+
+    25% {
+        top: 25%;
+        left: 80%;
+        width: 14%;
+        z-index: 2;
+    }
+
+    50% {
+        top: 65%;
+        left: 65%;
+        width: 18%;
+        z-index: 2;
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+
+    74% {
+        z-index: 2;
+    }
+
+    75% {
+        top: 75%;
+        left: 20%;
+        width: 14%;
+        z-index: 0;
+    }
+
+    100% {
+        top: 35%;
+        left: 35%;
+        width: 11%;
+        z-index: 0;
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Адаптація для невеликих екранів */
+@media (max-width: 600px) {
+    .scene {
+        gap: 15px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
